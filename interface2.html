@@ -1,0 +1,157 @@
+<html>
+    <head>
+
+<style>
+            body{
+                margin: 0;
+                padding: 0;
+                background: #2d3436;
+            }
+            .middle{
+                position: absolute;
+                top:50%;
+                left :50%;
+                transform: translate(-50%,-50%);
+
+            }
+            .btn5{
+                position: absolute;
+                top:50%;
+                left :50%;
+                transform: translate(-180%,-480%);
+            }
+            .btn4{
+                position: absolute;
+                top:50%;
+                left :50%;
+                transform: translate(70%,-330%);
+            }
+            .btn{
+                position: relative;
+                display: block;
+                color:red;
+                font-size: 14px;
+                font-family: monospace;
+                text-decoration: none;
+                margin: 30px 0;
+                border: 2px solid #ff7675;
+                padding: 14px 60px ;
+                text-transform: uppercase;
+                overflow: hidden;
+                transition: hidden;
+                transition: 1s all ease;
+
+
+
+            }
+            .btn::before{
+                background: #ff7675;
+                content: "";
+                position: absolute;
+                top:50%;
+                left:50%;
+                transform:translate(-50%,-50%);
+                z-index: -1;
+                transition: all 0.6s ease;
+
+            }
+           
+
+            .btn1::before{
+                width: 100%;
+                height: 0;
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+            .btn1:hover::before{
+                height:300%;
+            }
+            .btn2::before{
+                width: 100%;
+                height: 0;
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+            .btn2:hover::before{
+                height:300%;
+            }
+           
+            .btn3::before{
+                width: 100%;
+                height: 0;
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+            .btn3:hover::before{
+                height:300%;
+            }
+            .btn4::before{
+                width: 100%;
+                height: 0;
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+            .btn4:hover::before{
+                height: 300%;
+            }
+            .btn5::before{
+                width: 100%;
+                height: 0;
+                transform: translate(-50%,-50%) rotate(45deg);
+            }
+            .btn5:hover::before{
+                height: 300%;
+            }
+            
+
+        </style>
+
+
+
+<script>
+    function send2(str) {
+      //  alert(str) ;
+      if (str.length == 0) {
+        document.getElementById("mymsg").innerHTML = "";
+        return;
+      } else {
+        const myAjax = new XMLHttpRequest();
+        myAjax.onload = function() {
+          document.getElementById("mymsg").innerHTML = this.responseText +'[' + str +']';
+        }
+      myAjax.open("POST", "conn.php" ,true);
+      myAjax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    myAjax.send("dir="+str);
+      
+      }
+    }
+    </script>
+
+
+        <body>
+<div id="mymsg" style = "color: wheat; width: 100%; text-align: center; "></div>
+        <!--     <form action="conn.php" method = "POST" > -->
+
+            <div class="middle">
+
+                <!---
+                <a href="" class="btn btn1" name="button1"> forward</a>
+                <a href="" class="btn btn2" name="button2"> stop</a>
+                <a href="" class="btn btn3" name="button3"> backward</a>
+                <a href="" class="btn btn4" name="button4">  right</a>
+                <a href="" class="btn btn5" name="button5"> left</a>
+                -->
+                <input type="submit" onclick="send2('F');" class="btn btn1" value = "forward"   name = forward>
+                <input type="submit" onclick="send2('S');" class="btn btn2" value = "stop"      name = stop>
+                <input type="submit" onclick="send2('B');" class="btn btn3" value = "backward"  name = backward>
+                <input type="submit" onclick="send2('R');" class="btn btn4" value = "right"     name = right>
+                <input type="submit" onclick="send2('L');" class="btn btn5" value = "left"      name = left>
+             </div>
+
+<!-- </form> -->
+
+
+
+
+    
+        </body>
+
+        
+    </head>
+</html>
